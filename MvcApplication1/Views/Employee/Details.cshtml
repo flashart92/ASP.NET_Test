@@ -1,0 +1,54 @@
+﻿@model MvcApplication1.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutCreate.cshtml";
+}
+
+<div class="panel-body">
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.FirstName, "Имя", new { @class = "control-label col-sm-2" })
+            <div class="col-sm-7">
+                @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LastName, "Фамилия", new { @class = "control-label col-sm-2" })
+            <div class="col-sm-7">
+                @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, "Возраст", new { @class = "control-label col-sm-2" })
+            <div class="col-sm-7">
+                @Html.TextBoxFor(model => model.Age, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, "Пол", new { @class = "control-label col-sm-2" })
+            <div class="col-sm-7">
+                @{var listItems = new List<SelectListItem>()
+                 {
+                     new SelectListItem {Text = "Мужской",   Value = "Мужской"},
+                     new SelectListItem {Text = "Женский", Value = "Женский"}
+                 };}
+                @Html.DropDownListFor(model => model.Gender, listItems, string.Empty, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProgrammingLanguageId, "Язык программирования", new { @class = "control-label col-sm-2" })
+            <div class="col-sm-7">
+                @Html.DropDownList("ProgrammingLanguageId", null, String.Empty, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DepartmentId, "Отдел", new { @class = "control-label col-sm-2" })
+            <div class="col-sm-7">
+                @Html.DropDownList("DepartmentId", null, String.Empty, new { @class = "form-control", @disabled = "disabled" })
+            </div>
+        </div>
+    </div>
+    @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+</div>

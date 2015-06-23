@@ -1,0 +1,25 @@
+﻿@model MvcApplication1.Models.ProgrammingLanguage
+
+@{
+    ViewBag.Title = "Удалить?";
+    Layout = "~/Views/Shared/_LayoutCreate.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Language, "Язык программирования", new { @class = "control-label col-sm-2" })
+                <div class="col-sm-7">
+                    @Html.TextBoxFor(model => model.Language, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+            <input type="submit" value="Удалить" class="btn btn-danger" />
+            @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
+        </div>
+    </div>
+}
